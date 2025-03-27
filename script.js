@@ -18,6 +18,24 @@
 // - Provare a restituire un singolo post dalla rotta show, sempre in formato json
 
 
+const expressFile = require('express');
+const app = expressFile();
+const port = 2800;
+
+// server
+app.listen(port, () => {
+    console.log('attivazione del server');
+});
+
+
+// rotta '/'
+app.get('/', (req, res) => {
+    res.send('Rotta principale');
+});
+
+// rotta '/qualcosa'
+app.get('/qualcosa', (req, res) => {
+    res.send('Rotta secondaria');
 
 // array posts
 const posts = [
@@ -64,5 +82,8 @@ const posts = [
       tags: ["Dolci", "Dolci al cioccolato", "Torte", "Ricette vegetariane", "Ricette al forno"],
     },
   ];
-  
+
+  res.json(posts);
+});
+
   module.exports = posts;
